@@ -69,24 +69,19 @@ export class GildedRose {
   
   updateQuality() {
     for (let item of this.items) {
-      switch (item.name) {
-        case 'Aged Brie':
-          this.updateQualityForAgedBrie(item);
-          break;
-        case 'Backstage passes to a TAFKAL80ETC concert':
-          this.updateQualityForBackstagePasses(item);
-          break;
-        case 'Sulfuras, Hand of Ragnaros':
-          this.updateQualityForSulfuras(item);
-          break;
-        case 'Conjured Mana Cake':
-          this.updateQualityForConjured(item);
-          break;
-        default:
-          this.updateQualityForNormalItem(item);
-          break;
+      if (item.name.includes('Aged Brie')) {
+        this.updateQualityForAgedBrie(item);
+      } else if (item.name.includes('Backstage passes')) {
+        this.updateQualityForBackstagePasses(item);
+      } else if (item.name.includes('Sulfuras')) {
+        this.updateQualityForSulfuras(item);
+      } else if (item.name.includes('Conjured')) {
+        this.updateQualityForConjured(item);
+      } else {
+        this.updateQualityForNormalItem(item);
       }
     }
+    
     return this.items;
   }
 }
