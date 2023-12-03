@@ -15,6 +15,10 @@ export const BACKSTAGE_PASSES = 'Backstage passes';
 export const SULFURAS = 'Sulfuras';
 export const CONJURED = 'Conjured';
 
+export const MAX_QUALITY = 50;
+export const SELLIN_THRESHOLD_HIGH = 11;
+export const SELLIN_THRESHOLD_LOW = 6;
+
 export class GildedRose {
   items: Array<Item>;
 
@@ -23,22 +27,22 @@ export class GildedRose {
   }
 
   updateQualityForAgedBrie(item) {
-    if (item.quality < 50) {
+    if (item.quality < MAX_QUALITY) {
       item.quality += 1;
     }
     item.sellIn -= 1;
-    if (item.sellIn < 0 && item.quality < 50) {
+    if (item.sellIn < 0 && item.quality < MAX_QUALITY) {
       item.quality += 1;
     }
   }
   
   updateQualityForBackstagePasses(item) {
-    if (item.quality < 50) {
+    if (item.quality < MAX_QUALITY) {
       item.quality += 1;
-      if (item.sellIn < 11 && item.quality < 50) {
+      if (item.sellIn < SELLIN_THRESHOLD_HIGH && item.quality < MAX_QUALITY) {
         item.quality += 1;
       }
-      if (item.sellIn < 6 && item.quality < 50) {
+      if (item.sellIn < SELLIN_THRESHOLD_LOW && item.quality < MAX_QUALITY) {
         item.quality += 1;
       }
     }
