@@ -10,6 +10,11 @@ export class Item {
   }
 }
 
+export const AGED_BRIE = 'Aged Brie';
+export const BACKSTAGE_PASSES = 'Backstage passes';
+export const SULFURAS = 'Sulfuras';
+export const CONJURED = 'Conjured';
+
 export class GildedRose {
   items: Array<Item>;
 
@@ -69,13 +74,13 @@ export class GildedRose {
   
   updateQuality() {
     for (let item of this.items) {
-      if (item.name.includes('Aged Brie')) {
+      if (item.name.includes(AGED_BRIE)) {
         this.updateQualityForAgedBrie(item);
-      } else if (item.name.includes('Backstage passes')) {
+      } else if (item.name.includes(BACKSTAGE_PASSES)) {
         this.updateQualityForBackstagePasses(item);
-      } else if (item.name.includes('Sulfuras')) {
+      } else if (item.name.includes(SULFURAS)) {
         this.updateQualityForSulfuras(item);
-      } else if (item.name.includes('Conjured')) {
+      } else if (item.name.includes(CONJURED)) {
         this.updateQualityForConjured(item);
       } else {
         this.updateQualityForNormalItem(item);
